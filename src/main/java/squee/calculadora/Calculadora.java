@@ -16,7 +16,7 @@ public class Calculadora {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Adaptar el programa para multiplicar y dividir
+        // 1. Adaptar el programa para multiplicar y dividir
         
         Scanner sc = new Scanner(System.in);
         int opcion;
@@ -35,9 +35,16 @@ public class Calculadora {
             
         } while (opcion !=3);
 
-        
-        // Crear los métodos para multiplicar y dividir
-        // Método para pedir por teclado un int con Scanner y devuelva el int (excepción)
+    }
+        // 2. Crear los métodos para multiplicar y dividir
+    private static int multiplicar(int a, int b){
+            int mult = a*b;
+            return mult;
+    }
+    private static int dividir(int a, int b){
+            int div = a/b;
+            return div;
     }
     
+    // 3. Método para pedir por teclado un int con Scanner y devuelva el int (excepción)
 }
