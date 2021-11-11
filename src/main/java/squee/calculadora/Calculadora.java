@@ -4,6 +4,7 @@
  */
 package squee.calculadora;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -19,7 +20,8 @@ public class Calculadora {
         // 1. Adaptar el programa para multiplicar y dividir
         
         Scanner sc = new Scanner(System.in);
-        int opcion;
+        int opcion, op1, op2;
+        
         
         System.out.println("***** Calculadora ******");
         do {
@@ -27,32 +29,54 @@ public class Calculadora {
                     + "1. Multiplicar \n"
                     + "2. Dividir \n"
                     + "3. Salir");
-            opcion = sc.nextInt();
+            opcion = peticionNum();
             
             if (opcion <1 || opcion >3) {
                 System.out.println("Opción incorrecta. Por favor, seleccione una opción válida.");
             }
             
-        } while (opcion !=3);
-        
+            
         switch (opcion){
             case 1:
                 
+                System.out.println("Introduzca el operando 1: ");
+                op1 = peticionNum();
+                System.out.println("Introduzca el operando 2: ");
+                op2 = peticionNum();
+                
+                int resultMult = multiplicar (op1, op2);
+            
+                System.out.println("El resultado es "+resultMult);
+                
             break;
+
             
             case 2:
+                
+                System.out.println("Introduzca el operando 1: ");
+                op1 = peticionNum();
+                System.out.println("Introduzca el operando 2: ");
+                op2 = peticionNum();
+                
+                int resultDiv = dividir (op1, op2);
+            
+                System.out.println("El resultado es "+resultDiv);
                 
             break;
             
             case 3:
+                
+                System.out.println("Finalizando prograna...");
                 
             break;
             
             default:
                 
             break;
-        }
-                
+            
+            }
+        
+        } while (opcion !=3);
 
     }
         // 2. Crear los métodos para multiplicar y dividir
@@ -66,4 +90,24 @@ public class Calculadora {
     }
     
     // 3. Método para pedir por teclado un int con Scanner y devuelva el int (excepción)
+    private static int peticionNum(){
+        boolean pedir = true;
+        int numero = 0;
+            do{
+                try{
+                    
+                    Scanner sc = new Scanner(System.in);
+                    numero = sc.nextInt();
+                    pedir = false;
+                    
+                } catch (InputMismatchException ime) {
+                    
+                    System.out.println("Algo ha salido mal. Por favor introduzca de nuevo un número.");
+                    
+                }
+                
+            } while (pedir);
+            
+            return numero;
+    } 
 }
